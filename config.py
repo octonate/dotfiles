@@ -31,7 +31,70 @@ from libqtile.utils import guess_terminal
 
 mod = "mod4"
 terminal = 'alacritty'
-browser = 'chromium'
+browser = 'qutebrowser'
+
+
+clear='#00000000'
+black='#000000'
+#bright colors
+yellow_ryb='#fffe12'
+medium_aquamarine='#1de8af'
+imperial_red='#fd042f'
+violet_ryb='#8c05a4'
+blue='#1607fe'
+aqua='#00ffff'
+magenta='ff3ffe'
+green='#00f304'
+
+#purples (and light yellow)
+light_goldenrod_yellow='#f2e205'
+magenta_dye='#ba1b73'
+purple_mountain_dye='#a177b3'
+flirt='#9e007c'
+maximum_blue_purple='#b9a3fe'
+rose_pink='#ff73d2'
+pink_lace='#ffcffe'
+scarletty='#a80541'
+purpley='#63038c'
+
+def triangle1(bg_color, fg_color):
+    return widget.TextBox(
+            text='\u25e5',
+            padding=-1,
+            fontsize=35,
+            background=bg_color,
+            foreground=fg_color
+            )
+
+def triangle2(bg_color, fg_color):
+    return widget.TextBox(
+            text='\u25e4',
+            padding=-1,
+            fontsize=35,
+            background=bg_color,
+            foreground=fg_color
+            )
+
+def triangle3(bg_color, fg_color):
+    return widget.TextBox(
+            text='\u25e3',
+            padding=0,
+            margin=0,
+            fontsize=35,
+            background=bg_color,
+            foreground=fg_color
+            )
+
+def triangle4(bg_color, fg_color):
+    return widget.TextBox(
+            text='\u25e2',
+            padding=0,
+            margin=0,
+            fontsize=35,
+            background=bg_color,
+            foreground=fg_color
+            )
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -108,7 +171,7 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(border_focus=imperial_red, border_normal=aqua, border_width=3, margin=6),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -117,46 +180,69 @@ layouts = [
     # layout.MonadTall(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
+    layout.Tile(border_focus=aqua, border_normal=light_goldenrod_yellow, border_width=2, margin=6),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
 ]
 
 widget_defaults = dict(
-    font="mononoki",
-    fontsize=14,
-    padding=3,
+    font='mononoki bold',
+    fontsize=12,
+    padding=6,
+    foreground='#000000'
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        bottom=bar.Bar(
+        top=bar.Bar(
             [
-                widget.CurrentLayout(),
-                widget.GroupBox(highlight_method='block', disable_drag='True', rounded='False'),
+                widget.Spacer(length=7, background=magenta),
+                widget.CurrentLayout(background=magenta, padding=0),
+                triangle1(magenta, purpley),
+                widget.GroupBox(
+                    highlight_method='line', 
+                    disable_drag='True', 
+                    highlight_color=yellow_ryb, 
+                    this_current_screen_border=yellow_ryb, 
+                    background=purpley, 
+                    padding=3, 
+                    margin_x=0,
+                    block_highlight_text_color='#000000',
+                    inactive='#000000',
+                    ),
+                triangle2(clear, purpley),
                 widget.Prompt(),
-                widget.WindowName(),
-                widget.Chord(
-                    chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
-                    },
-                    name_transform=lambda name: name.upper(),
-                ),
-                widget.KeyboardLayout(configured_keyboards=['us colemak', 'us']),
+                widget.Spacer(),
+                #widget.Chord(
+                #    background=light_goldenrod_yellow,
+                #    chords_colors={
+                #        "launch": ("#ff0000", "#ffffff"),
+                #    },
+                #    name_transform=lambda name: name.upper(),
+                #),
+
+                triangle1(clear, medium_aquamarine),
+                widget.KeyboardLayout(configured_keyboards=['us colemak', 'us'], background=medium_aquamarine, padding=0), 
+                triangle2(yellow_ryb, medium_aquamarine),
+                widget.Battery(discharge_char='v', format='{char} {percent:2.0%}', background=yellow_ryb, padding=0),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%a, %b %d %I:%M %p"),
-                widget.QuickExit(),
+                triangle1(yellow_ryb, imperial_red),
+                widget.Clock(format="%a, %b %d %I:%M %p", background=imperial_red, padding=0),
+                triangle2(scarletty, imperial_red),
+                widget.QuickExit(background=scarletty, padding=0),
+                widget.Spacer(length=7, background=scarletty),
             ],
-            24,
-            wallpaper='~/Pictures/Screenshots/wallpaper.png',
-            wallpaper_mode='fill',
-            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
-            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            18,
+            background=clear,
+            #border_width=[0, 0, 3, 0],  # Draw top and bottom borders
+            #border_color=["000000", "000000", "000000", "000000"]  # Borders are magenta
         ),
+        wallpaper='~/Pictures/wallpapers/facerevealwallpaperpixel.png',
+        wallpaper_mode='stretch',
     ),
 ]
 
@@ -194,6 +280,7 @@ auto_minimize = True
 
 # When using the Wayland backend, this can be used to configure input devices.
 wl_input_rules = None
+
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the

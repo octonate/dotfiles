@@ -23,7 +23,7 @@
   # available, otherwise `xterm-256color` is used.
   #TERM: alacritty
 
-#window:
+window:
   # Window dimensions (changes require restart)
   #
   # Number of lines/columns (not pixels) in the terminal. Both lines and columns
@@ -68,7 +68,7 @@
   #
   # Window opacity as a floating point number from `0.0` to `1.0`.
   # The value `0.0` is completely transparent and `1.0` is opaque.
-  #opacity: 1.0
+  opacity: 0.8
 
   # Startup Mode (changes require restart)
   #
@@ -158,7 +158,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 7
+  size: 7.5
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -317,12 +317,15 @@ draw_bold_text_with_bright_colors: true
   #  white:   '#828482'
 
 
- # Colors (Nightfly)
+ # Colors
+ # commented is Nightfly, uncommented is custom
 colors:
    # Default colors
   primary:
-     background: '#011627'
-     foreground: '#acb4c2'
+     #background: '#011627'
+     background: '#000000'
+     #foreground: '#acb4c2'
+     foreground: '#94baba'
 
   cursor:
     text: '#fafafa'
@@ -334,25 +337,44 @@ colors:
 
    # Normal colors
   normal:
-    black:   '#1d3b53'
-    red:     '#fc514e'
-    green:   '#a1cd5e'
-    yellow:  '#e3d18a'
-    blue:    '#82aaff'
-    magenta: '#c792ea'
-    cyan:    '#7fdbca'
-    white:   '#a1aab8'
+    #black:   '#1d3b53'
+    #red:     '#fc514e'
+    #green:   '#a1cd5e'
+    #yellow:  '#e3d18a'
+    #blue:    '#82aaff'
+    #magenta: '#c792ea'
+    #cyan:    '#7fdbca'
+    #white:   '#a1aab8'
+
+    black: '#0d0d0d'
+    red: '#fd042f'
+    green: '#9efe02'
+    yellow: '#daff00'
+    blue: '#00a5f4'
+    magenta: '#8c05a4'
+    cyan: '#1de8af'
+    white: '#a1aab8' 
 
    # Bright colors
   bright:
-    black:   '#7c8f8f'
-    red:     '#ff5874'
-    green:   '#21c7a8'
-    yellow:  '#ecc48d'
-    blue:    '#82aaff'
-    magenta: '#ae81ff'
-    cyan:    '#7fdbca'
-    white:   '#d6deeb'
+    #black:   '#7c8f8f'
+    #red:     '#ff5874'
+    #green:   '#21c7a8'
+    #yellow:  '#ecc48d'
+    #blue:    '#82aaff'
+    #magenta: '#ae81ff'
+    #cyan:    '#7fdbca'
+    #white:   '#d6deeb'
+
+    black: '#7e7f6a'
+    red: '#f74d6a'
+    green: '#01ff7a'
+    yellow: '#fffe12'
+    blue: '#1607fe'
+    magenta: '#ff73d2'
+    cyan: '#00ffff'
+    white: '#f2f2f2' 
+
 
   # Indexed Colors
   #
