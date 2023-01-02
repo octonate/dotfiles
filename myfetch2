@@ -1,0 +1,53 @@
+#!/bin/sh
+#
+# ufetch-void - tiny system info for void
+
+## INFO
+
+# user is already defined
+## UI DETECTION
+
+
+
+## DEFINE COLORS
+
+# probably don't change these
+bold="$(tput bold 2> /dev/null)"
+#black="$(tput setaf 0 2> /dev/null)"
+#red="$(tput setaf 1 2> /dev/null)"
+#green="$(tput setaf 2 2> /dev/null)"
+#yellow="$(tput setaf 3 2> /dev/null)"
+#blue="$(tput setaf 4 2> /dev/null)"
+#magenta="$(tput setaf 5 2> /dev/null)"
+#cyan="$(tput setaf 6 2> /dev/null)"
+#white="$(tput setaf 7 2> /dev/null)"
+#reset="$(tput sgr0 2> /dev/null)"
+
+red='\033[38;5;1m'
+green='\033[38;5;2m'
+yellow='\033[38;5;3m'
+blue='\033[38;5;4m'
+magenta='\033[38;5;5m'
+cyan='\033[38;5;6m'
+reset='\033[0m'
+
+colour="${yellow}"
+
+# you can change these
+lc="${reset}${bold}${magenta}"        # labels
+nc="${reset}${bold}${red}"          # user and hostname
+ic="${reset}"                       # info
+c0="${reset}${bold}${green}"        # first color
+c1="${reset}${yellow}"               # second color
+
+## OUTPUT
+
+echo """
+${c0}      _______      ${nc}nathan${ic}@${nc}void-x240${reset}
+${c1}      ${c0}\_____ \`-    ${lc}OS:     ${ic}AmogOS${reset}
+${c1}   /\   ${c0}___ \`- \   ${lc}Host:   ${ic}Grandma's Computer${reset}
+${c1}  | |  ${c0}/   \  | |  ${lc}Uptime: ${ic}69 years, 420 days${reset}
+${c1}  | |  ${c0}\___/  | |  ${lc}CPU:    ${ic}AMD Ryzen Threadripper 6990X (420) @ 6.90Ghz${reset}
+${c1}   \ \`-_____  ${c0}\/   ${lc}GPU:    ${ic}NVIDIA RTX 6090 1024 GB${reset}
+${c1}    \`-______\      ${lc}Memory: ${ic}0.0000001MiB / 4300800MiB${reset}
+"""
